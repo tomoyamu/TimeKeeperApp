@@ -20,7 +20,7 @@ namespace TimeKeeperApp
 			get { return _isPlaying; }
 		}
 		public delegate void OnTimeOut();
-		public OnTimeOut onTimeOut;
+		public OnTimeOut onTimeOut = delegate { };
 
 		private void SaveTimeAsFile()
 		{
@@ -41,6 +41,7 @@ namespace TimeKeeperApp
 			{
 				time = 0;
 				logger.Write("Time has been reset");
+				SaveTimeAsFile();
 			}
 			this.stopwatch = new();
 		}
